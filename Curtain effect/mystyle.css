@@ -1,0 +1,118 @@
+﻿:root{
+  --minh: 90vh;
+  --color1: red;
+  --color2: lightblue;
+}
+
+  html {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: white;
+  padding: 20px;
+  
+}
+
+ 
+.curtain {
+  /** create the "split" background **/
+  background-image: linear-gradient(to bottom, var(--color2) 50%, var(--color1) 50%);
+  border-style: dotted;
+}
+
+/** add extra space to the bottom (need this for the "sticky" effect) **/
+.curtain::after {
+  content: "";
+  display: block;
+  min-height: var(--minh);
+  
+   
+  //border-style: dashed;
+}
+
+
+
+.invert {
+  /** make the content sticky **/
+ position: sticky;
+  top: 10px;
+
+  /** blend the content with the contrast effect **/
+  //mix-blend-mode: difference;
+
+  /** center the content **/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /** set the minimum height of the section **/
+  min-height: var(--minh);
+  
+//  border-style: dotted; }
+
+.balloon {
+  display:inline-block;
+   width:120px;
+  height:145px;
+  background:hsl(215,50%,65%);
+  border-radius:80%;
+  position:relative;
+  box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);
+  margin:20px 30px;
+  transition:transform 0.5s ease;
+  z-index:10;
+  animation:balloons 4s ease-in-out infinite;
+  transform-origin:bottom center;
+}
+
+@keyframes balloons {
+  0%,100%{ transform:translateY(0) rotate(-4deg); }
+  50%{ transform:translateY(-25px) rotate(4deg); }
+  from {top: 0px;}
+  to {top: 200px;}
+}
+
+
+.balloon:before {
+  content:"▲";
+  font-size:20px;
+  color:hsl(215,30%,50%);
+  display:block;
+  text-align:center;
+  width:100%;
+  position:absolute;
+  bottom:-12px;
+  z-index:-100;
+}
+
+.balloon:after {
+ display:inline-block; top:153px;
+  position:absolute;
+  height:250px;
+  width:1px;
+  margin:0 auto;
+  content:"";
+  background:rgba(0,0,0,0.2); 
+}
+
+.balloon:nth-child(2){ background:hsl(245,40%,65%); animation-duration:3.5s; }
+.balloon:nth-child(2):before { color:hsl(245,40%,65%);  }
+
+.balloon:nth-child(3){ background:hsl(139,50%,60%); animation-duration:3s; }
+.balloon:nth-child(3):before { color:hsl(139,30%,50%);  }
+
+.balloon:nth-child(4){ background:hsl(59,50%,58%); animation-duration:4.5s; }
+.balloon:nth-child(4):before { color:hsl(59,30%,52%);  }
+
+.balloon:nth-child(5){ background:hsl(23,55%,57%); animation-duration:5s; }
+.balloon:nth-child(5):before { color:hsl(23,44%,46%);  }
+
+
+}
+
+h2 {
+  /** set the color of the text **/
+  color:  yellow ;
+  border-style: double;
+  padding: 10px;
+}
+//Balloons: https://codepen.io/bennettfeely/pen/DrNgoO 
